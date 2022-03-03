@@ -12,13 +12,19 @@ pipeline{
 		stage('Build'){
 			steps{
 				echo "Building the checking out project"
-				bat javac Calculator.java CalculatorTest.java
+				bat 'mvn clean compile'
 			}
 		}
 		stage('Test'){
 			steps{
 				echo "Running tests"
-				bat mvn clean test
+				bat 'mvn test'
+			}
+			
+			post{
+				always{
+					junit '**/target/surefire-reports/TEST-*.xml'
+				}
 			}
 		}
 
