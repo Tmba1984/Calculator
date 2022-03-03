@@ -1,0 +1,26 @@
+pipeline{
+	agent any
+	
+	stages{
+		stage('Git-Checkout'){
+			steps{
+				echo "Checking out from Git Repo";
+				git 'https://github.com/Tmba1984/Calculator.git'
+			}
+		
+		}
+		stage('Build'){
+			steps{
+				echo "Building the checking out project"
+				bat javac Calculator.java CalculatorTest.java
+			}
+		}
+		stage('Test'){
+			steps{
+				echo "Running tests"
+				bat mvn clean test
+			}
+		}
+
+	}
+}
