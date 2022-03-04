@@ -12,10 +12,7 @@ pipeline{
 		stage('Build'){
 			steps{
 				echo "Building the checking out project"
-				withMaven(maven: 'apache-maven-3.8.4'){
-					bat 'mvn clean compile'
-				}
-				
+				bat 'mvn clean compile'	
 			}
 		}
 		stage('Test'){
