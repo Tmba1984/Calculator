@@ -4,7 +4,7 @@ pipeline{
 	stages{
 		stage('Git-Checkout'){
 			steps{
-			
+				echo "Checking out from Git Repo"			
 				checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '27461667-09e8-423a-8542-7f7b51421633', url: 'https://github.com/Tmba1984/Calculator.git']]])
 			}
 		
@@ -12,7 +12,7 @@ pipeline{
 		stage('Build'){
 			steps{
 				echo "Building the checking out project"
-				bat 'mvn clean compile'
+				bat 'mvn compile'
 			}
 		}
 		stage('Test'){
