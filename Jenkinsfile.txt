@@ -5,12 +5,7 @@ pipeline{
 		stage('Git-Checkout'){
 			steps{
 			
-				checkout changelog: true, poll: true, scm: [
-				$class: 'GitSCM',
-				branches: [[name: '*/main']],
-				extensions: [[$class: 'PreBuildMerge', options: [fastForwardMode: 'FF', mergeRemote: 'origin', mergeStrategy: 'DEFAULT', mergeTarget: "${env.gitlabTargetBranch}"]]],
-				userRemoteConfigs: [[name: 'origin', url: 'git@github.com:Tmba1984/Calculator.git']]
-				]
+				checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '27461667-09e8-423a-8542-7f7b51421633', url: 'https://github.com/Tmba1984/Calculator.git']]])
 			}
 		
 		}
