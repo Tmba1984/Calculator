@@ -14,7 +14,7 @@ class CalculatorTest {
 	
 	@Test
 	public void testSubs() {
-		assertEquals(-1, calc.subs(2, 2));
+		assertEquals(0, calc.subs(2, 2));
 	}
 
 }
